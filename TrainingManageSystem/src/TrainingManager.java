@@ -34,7 +34,35 @@ public class TrainingManager {
 		System.out.print("Training Code: ");
 		int trainCode = input.nextInt();
 		if (training.code == trainCode) {
-			System.out.println("The training to de edited is "+trainCode);
+			int num = 0;
+
+			while (num != 5) {
+				System.out.println("Training Info Edit Menu");
+				System.out.println("1. Edit Code");
+				System.out.println("2. Edit Name");
+				System.out.println("3. Edit Maximum Weight");
+				System.out.println("4. Edit Maximum count");
+				System.out.println("5. Exit");
+				System.out.print("Select one number between 1 - 5: ");
+				num = input.nextInt();
+				if (num == 1) {
+					System.out.print("Training Code: ");
+					training.code = input.nextInt();
+				}
+				if (num == 2) {
+					System.out.print("Training name: ");
+					training.name = input.next();
+				}
+				if (num == 3) {
+					System.out.print("Maximum Weight: ");
+					training.max = input.nextInt();
+				}
+				if (num == 4) {
+					System.out.print("Maximum Count: ");
+					training.count = input.nextInt();
+				}
+			}
+			
 		}
 	}
 	public void viewTraining() {

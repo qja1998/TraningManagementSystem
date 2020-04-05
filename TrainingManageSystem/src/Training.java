@@ -20,6 +20,6 @@ public class Training {
 	}
 	
 	public void printInfo() {
-		System.out.println("Code:"+code+" name:"+name+" max:"+max+" count:"+count);
+		System.out.println("Code:"+code+" Training name:"+name+" Maximum Weight:"+max+" Maximum count:"+count);
 	}
 }

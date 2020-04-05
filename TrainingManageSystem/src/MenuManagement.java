@@ -6,7 +6,7 @@ public class MenuManagement{
 		Scanner input = new Scanner(System.in);
 		TrainingManager trainingManager = new TrainingManager(input);
 		
-		int num = 5;
+		int num = 0;
 
 		while (num != 5) {
 			System.out.println("Training Management System Menu");
