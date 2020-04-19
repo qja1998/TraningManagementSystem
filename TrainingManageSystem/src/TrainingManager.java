@@ -1,52 +1,68 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import Training.LowerBody;
+import Training.Training;
+
 public class TrainingManager {
 	ArrayList<Training> trainings = new ArrayList<Training>();
 	Scanner input;
 	TrainingManager(Scanner input){
 		this.input = input;
 	}
-	
+
 	public void addTraining() {
-		Training training = new Training();
-		System.out.print("Training Code: ");
-		training.code = input.nextInt();
-		System.out.print("Training name: ");
-		training.name = input.next();
-		System.out.print("Maximum Weight: ");  //운동의 최대 무게
-		training.max = input.nextInt();
-		System.out.print("Maximum Count: ");   //운동의 최대 횟수
-		training.count = input.nextInt();
-		trainings.add(training);
+		int kind = 0;
+		Training training;
+		while(kind != 1 && kind !=2) {
+			System.out.println("1 for Upper body");
+			System.out.println("2 for Lower body");
+			System.out.print("Select num for Training Kind between 1 ~ 2: ");
+			kind = input.nextInt();
+			if (kind == 1) {
+				training = new Training();
+				training.getUserInput(input);
+				trainings.add(training);
+				break;
+			}
+			else if (kind == 2) {
+				training = new LowerBody();
+				training.getUserInput(input);
+				trainings.add(training);
+				break;
+			}
+			else {
+				System.out.print("Select num for Training Kind between 1 ~ 2: ");
+			}
+		}
 	}
 	public void deleteTraining() {
 		System.out.print("Training Code: ");
 		int trainCode = input.nextInt();
 		int index = -1;
 		for (int i=0; i<trainings.size(); i++) {
-			if (trainings.get(i).code == trainCode) {
+			if (trainings.get(i).getCode() == trainCode) {
 				index = i;
 				break;
 			}
 		}
-		 if (index >= 0) {
+		if (index >= 0) {
 			trainings.remove(index);
 			System.out.println("The training" + trainCode + " is deleted");
-		 }
-		
-		 else {
+		}
+
+		else {
 			System.out.println("The training has not been registered");
 			return;
 		}
-		
+
 	}
 	public void editTraining() {
 		System.out.print("Training Code: ");
 		int trainCode = input.nextInt();
 		for (int i=0; i<trainings.size(); i++) {
 			Training training = trainings.get(i);
-			if (trainings.get(i).code == trainCode) {
+			if (training.getCode() == trainCode) {
 				int num = -1;
 				while (num != 5) {
 					System.out.println("Training Info Edit Menu");
@@ -59,32 +75,36 @@ public class TrainingManager {
 					num = input.nextInt();
 					if (num == 1) {
 						System.out.print("Training Code: ");
-						training.code = input.nextInt();
+						int code = input.nextInt();
+						training.setCode(code);
 					}
 					else if (num == 2) {
 						System.out.print("Training name: ");
-						training.name = input.next();
+						String name = input.next();
+						training.setName(name);
 					}
 					else if (num == 3) {
 						System.out.print("Maximum Weight: ");
-						training.max = input.nextInt();
+						int max = input.nextInt();
+						training.setMax(max);
 					}
 					else if (num == 4) {
 						System.out.print("Maximum Count: ");
-						training.count = input.nextInt();
+						int count = input.nextInt();
+						training.setCount(count);
 					}
 					else {
 						continue;
 					}
 				}
-			break;
+				break;
 			}
 		}
 	}
 	public void viewTrainings() {
 		for (int i=0; i<trainings.size(); i++) {
 			trainings.get(i).printInfo();
-			}
 		}
+	}
 }
 
