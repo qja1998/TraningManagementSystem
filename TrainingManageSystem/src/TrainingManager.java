@@ -1,8 +1,10 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import Training.LowerBody;
+import Training.Cardio;
 import Training.Training;
+import Training.TrainingKind;
+import Training.WeightTraining;
 
 public class TrainingManager {
 	ArrayList<Training> trainings = new ArrayList<Training>();
@@ -15,18 +17,25 @@ public class TrainingManager {
 		int kind = 0;
 		Training training;
 		while(kind != 1 && kind !=2) {
-			System.out.println("1 for Upper body");
-			System.out.println("2 for Lower body");
+			System.out.println("1 for Weight Training");
+			System.out.println("2 for Cardio");
+			System.out.println("3 for Core");
 			System.out.print("Select num for Training Kind between 1 ~ 2: ");
 			kind = input.nextInt();
 			if (kind == 1) {
-				training = new Training();
+				training = new WeightTraining(TrainingKind.WeightTraining);
 				training.getUserInput(input);
 				trainings.add(training);
 				break;
 			}
 			else if (kind == 2) {
-				training = new LowerBody();
+				training = new Cardio(TrainingKind.Cardio);
+				training.getUserInput(input);
+				trainings.add(training);
+				break;
+			}
+			else if (kind == 3) {
+				training = new Training(TrainingKind.Core);
 				training.getUserInput(input);
 				trainings.add(training);
 				break;
@@ -101,6 +110,28 @@ public class TrainingManager {
 			}
 		}
 	}
+	
+	public void searchTraining() {
+		System.out.print("Training Code: ");
+		int trainCode = input.nextInt();
+		int index = -1;
+		for (int i=0; i<trainings.size(); i++) {
+			if (trainings.get(i).getCode() == trainCode) {
+				index = i;
+				break;
+			}
+		}
+		if (index >= 0) {
+			trainings.get(index).printInfo();
+		}
+
+		else {
+			System.out.println("The training has not been registered");
+			return;
+		}
+
+	}
+	
 	public void viewTrainings() {
 		for (int i=0; i<trainings.size(); i++) {
 			trainings.get(i).printInfo();

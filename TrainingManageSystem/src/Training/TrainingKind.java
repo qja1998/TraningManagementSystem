@@ -1,7 +1,7 @@
 package Training;
 
 public enum TrainingKind {
-	UpperBody,
-	LowerBody,
+	WeightTraining,
+	Cardio,
 	Core
 }

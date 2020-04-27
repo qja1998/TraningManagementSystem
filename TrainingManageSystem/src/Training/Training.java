@@ -3,8 +3,7 @@ package Training;
 import java.util.Scanner;
 
 public class Training {
-
-	protected TrainingKind kind = TrainingKind.UpperBody;
+	protected TrainingKind kind = TrainingKind.WeightTraining;
 	protected String name;
 	protected int code;
 	protected int max;
@@ -17,7 +16,19 @@ public class Training {
 		this.name = name;
 		this.code = code;
 	}
+	
+	public Training(TrainingKind kind) {
+		this.kind = kind;
+	}
+	
 	public Training(String name,int code,int max,int count) {
+		this.name = name;
+		this.code = code;
+		this.max = max;
+		this.count = count;
+	}
+	public Training(TrainingKind kind, String name,int code,int max,int count) {
+		this.kind = kind;
 		this.name = name;
 		this.code = code;
 		this.max = max;
@@ -64,12 +75,27 @@ public class Training {
 		this.count = count;
 	}
 	
-	
+
 	public void printInfo() {
-		System.out.println("Code:"+code+" Training name:"+name+" Maximum Weight:"+max+" Maximum count:"+count);
+		String skind = "none";
+		
+		switch(this.kind) {
+		case WeightTraining:
+			skind = "Weight";
+			break;
+		case Cardio:
+			skind = "Cardio";
+			break;
+		case Core:
+			skind = "Core";
+			break;
+		default:
+		}
+		System.out.println("Kind:"+skind+"Code:"+code+" Training name:"+name+" Maximum Weight:"+max+" Maximum count:"+count);
 	}
 	
 	public void getUserInput(Scanner input) {
+		
 		System.out.print("Training Code: ");
 		int code = input.nextInt();
 		this.setCode(code);
@@ -87,6 +113,5 @@ public class Training {
 		this.setCount(count);
 		
 	}
-	
 	
 }

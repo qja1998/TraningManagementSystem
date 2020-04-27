@@ -2,8 +2,12 @@ package Training;
 
 import java.util.Scanner;
 
-public class LowerBody extends Training {
-
+public class WeightTraining extends Training {
+	
+	public WeightTraining(TrainingKind kind) {
+		super(kind);
+	}
+	
 	public void getUserInput(Scanner input) {
 		System.out.print("Training Code: ");
 		int code = input.nextInt();
@@ -33,7 +37,6 @@ public class LowerBody extends Training {
 		System.out.print("Maximum Count: ");
 		int count = input.nextInt();
 		this.setCount(count);
-
 	}
 
 }
