@@ -9,22 +9,24 @@ public class WeightTraining extends Training {
 	}
 	
 	public void getUserInput(Scanner input) {
-		System.out.print("Training Code: ");
-		int code = input.nextInt();
-		this.setCode(code);
+		setTrainingCode(input);
+		setTrainingName(input);
+		setTrainingWeightwithYN(input);
+		setTrainingCount(input);
+	}
 
-		System.out.print("Training name: ");
-		String name = input.next();
-		this.setName(name);
-
+	public void printInfo() {
+		String skind = getKindString();
+		System.out.println("Kind:"+skind+"Code:"+code+" Training name:"+name+" Maximum Weight:"+max+" Maximum count:"+count);
+	}
+	
+	public void setTrainingWeightwithYN(Scanner input) {
 		char answer = 'x';
 		while (answer !='y' && answer!='Y' && answer !='n' && answer !='N') {
 			System.out.print("Do you use Weight equipment? (Y/N) ");
 			answer = input.next().charAt(0);
 			if (answer =='y' || answer=='Y') {
-				System.out.print("Maximum Weight: ");
-				int max = input.nextInt();
-				this.setMax(max);
+				setTrainingMax(input);
 			}
 
 			else if (answer =='n' || answer=='N') {
@@ -34,9 +36,6 @@ public class WeightTraining extends Training {
 			else {
 			}
 		}
-		System.out.print("Maximum Count: ");
-		int count = input.nextInt();
-		this.setCount(count);
 	}
-
+	
 }

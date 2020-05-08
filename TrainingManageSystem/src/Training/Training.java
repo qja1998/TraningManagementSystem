@@ -2,7 +2,7 @@ package Training;
 
 import java.util.Scanner;
 
-public class Training {
+public abstract class Training implements TrainingInput {
 	protected TrainingKind kind = TrainingKind.WeightTraining;
 	protected String name;
 	protected int code;
@@ -75,8 +75,33 @@ public class Training {
 		this.count = count;
 	}
 	
-
-	public void printInfo() {
+	public abstract void printInfo();
+	
+	public void setTrainingCode(Scanner input) {
+		System.out.print("Training Code: ");
+		int code = input.nextInt();
+		this.setCode(code);
+	}
+	
+	public void setTrainingName(Scanner input) {
+		System.out.print("Training name: ");
+		String name = input.next();
+		this.setName(name);
+	}
+	
+	public void setTrainingMax(Scanner input) {
+		System.out.print("Maximum Weight: ");
+		int max = input.nextInt();
+		this.setMax(max);
+	}
+	
+	public void setTrainingCount( Scanner input) {
+		System.out.print("Maximum Count: ");
+		int count = input.nextInt();
+		this.setCount(count);
+	}
+	
+	public String getKindString() {
 		String skind = "none";
 		
 		switch(this.kind) {
@@ -91,27 +116,7 @@ public class Training {
 			break;
 		default:
 		}
-		System.out.println("Kind:"+skind+"Code:"+code+" Training name:"+name+" Maximum Weight:"+max+" Maximum count:"+count);
-	}
-	
-	public void getUserInput(Scanner input) {
-		
-		System.out.print("Training Code: ");
-		int code = input.nextInt();
-		this.setCode(code);
-		
-		System.out.print("Training name: ");
-		String name = input.next();
-		this.setName(name);
-		
-		System.out.print("Maximum Weight: ");
-		int max = input.nextInt();
-		this.setMax(max);
-		
-		System.out.print("Maximum Count: ");
-		int count = input.nextInt();
-		this.setCount(count);
+		return skind;
 		
 	}
-	
 }

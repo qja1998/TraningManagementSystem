@@ -9,27 +9,37 @@ public class MenuManagement{
 		int num = 0;
 
 		while (num != 5) {
-			System.out.println("Training Management System Menu");
-			System.out.println("Select a Menu");
-			System.out.println("1. Add Training");
-			System.out.println("2. Delete Training");
-			System.out.println("3. Edit Training");
-			System.out.println("4. View Trainings");
-			System.out.println("5. Exit");
-			System.out.print("Select one number between 1 - 5: ");
+			showMenu();
 			num = input.nextInt();
-			if (num == 1) {
+			switch(num) {
+			case 1:
 				trainingManager.addTraining();
-			}
-			if (num == 2) {
+				break;
+			case 2:
 				trainingManager.deleteTraining();
-			}
-			if (num == 3) {
+				break;
+			case 3:
 				trainingManager.editTraining();
-			}
-			if (num == 4) {
+				break;
+			case 4:
 				trainingManager.viewTrainings();
+				break;
+			default:
+				break;
+				
 			}
 		}
+	}
+	
+	public static void showMenu() {
+		System.out.println("Training Management System Menu");
+		System.out.println("Select a Menu");
+		System.out.println("1. Add Training");
+		System.out.println("2. Delete Training");
+		System.out.println("3. Edit Training");
+		System.out.println("4. View Trainings");
+		System.out.println("5. Exit");
+		System.out.print("Select one number between 1 - 5: ");
+		
 	}
 }
