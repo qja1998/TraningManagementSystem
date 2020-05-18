@@ -2,15 +2,20 @@ package Training;
 
 import java.util.Scanner;
 
+import exception.TimeException;
+
 public abstract class TimeTraining extends Training {
 	
-	protected int time;
+	protected String time;
 	
-	public int getTime() {
+	public String getTime() {
 		return time;
 	}
 
-	public void setTime(int time) {
+	public void setTime(String time) throws TimeException {
+		if (!time.contains(":")) {
+			throw new TimeException();
+		}
 		this.time = time;
 	}
 
@@ -33,7 +38,7 @@ public abstract class TimeTraining extends Training {
 			System.out.print("Do you check the excercise by time? (Y/N) ");
 			answer = input.next().charAt(0);
 			if (answer =='y' || answer=='Y') {
-				time = 0;
+				time = "00:00";
 				setTrainingTime(input);
 				break;
 			}
@@ -48,9 +53,18 @@ public abstract class TimeTraining extends Training {
 	}
 	
 	public void setTrainingTime( Scanner input) {
-		System.out.print("Maximum Time: ");
-		int time = input.nextInt();
-		this.setCount(time);
+		String time = "";
+		while (!time.contains(":")) {
+			System.out.print("Maximum Time: ");
+			time = input.next();
+			try {
+				this.setTime(time);
+			}
+			catch (TimeException e) {
+				System.out.println("Incorrect Time Format. Time format is '00:00' ");
+			}
+		}
+		
 	}
 
 }

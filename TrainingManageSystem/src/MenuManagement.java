@@ -1,35 +1,54 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
+
 
 public class MenuManagement{
 	public static void main(String[] args) {
 	
 		Scanner input = new Scanner(System.in);
 		TrainingManager trainingManager = new TrainingManager(input);
-		
-		int num = 0;
+		selectMenu(input, trainingManager);
+	
+	}
+
+	
+	public static void selectMenu(Scanner input, TrainingManager trainingManager) {
+		int num = -1;
 
 		while (num != 5) {
-			showMenu();
-			num = input.nextInt();
-			switch(num) {
-			case 1:
-				trainingManager.addTraining();
-				break;
-			case 2:
-				trainingManager.deleteTraining();
-				break;
-			case 3:
-				trainingManager.editTraining();
-				break;
-			case 4:
-				trainingManager.viewTrainings();
-				break;
-			default:
-				break;
-				
+			try {
+				showMenu();
+				num = input.nextInt();
+				switch(num) {
+				case 1:
+					trainingManager.addTraining();
+					break;
+				case 2:
+					trainingManager.deleteTraining();
+					break;
+				case 3:
+					trainingManager.editTraining();
+					break;
+				case 4:
+					trainingManager.viewTrainings();
+					break;
+				default:
+					continue;
+				}
+			}
+			catch(InputMismatchException e) {
+				System.out.println("please put an integer between 1 ~ 5.");
+				if (input.hasNext()) {
+					input.next();
+				}
+				num = -1;
+					
 			}
 		}
 	}
+	
+		
+	
 	
 	public static void showMenu() {
 		System.out.println("Training Management System Menu");
