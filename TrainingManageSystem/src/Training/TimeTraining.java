@@ -38,12 +38,11 @@ public abstract class TimeTraining extends Training {
 			System.out.print("Do you check the excercise by time? (Y/N) ");
 			answer = input.next().charAt(0);
 			if (answer =='y' || answer=='Y') {
-				time = "00:00";
 				setTrainingTime(input);
 				break;
 			}
 			else if (answer =='n' || answer=='N') {
-				this.setCount(0);
+				time = "00:00";
 				break;
 			}
 			else {
