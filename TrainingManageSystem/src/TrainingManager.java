@@ -1,3 +1,4 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -8,9 +9,14 @@ import Training.TrainingInput;
 import Training.TrainingKind;
 import Training.WeightTraining;
 
-public class TrainingManager {
+public class TrainingManager implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5861687776253873475L;
+	
 	ArrayList<TrainingInput> trainings = new ArrayList<TrainingInput>();
-	Scanner input;
+	transient Scanner input;
 	TrainingManager(Scanner input){
 		this.input = input;
 	}
@@ -57,11 +63,16 @@ public class TrainingManager {
 		}
 	}
 	
+	public void setScanner(Scanner input) {
+        this.input = input;
+    }
+
+	
 	public void deleteTraining() {
 		System.out.print("Training Code: ");
 		int trainCode = input.nextInt();
 		int index = -1;
-		findIndex(index);
+		index = findIndex(trainCode);
 		removefromTrinings(index, trainCode);
 	}
 	
@@ -140,25 +151,3 @@ public class TrainingManager {
 		System.out.print("Select one number between 1 - 5: ");
 	}
 }
-
-
-//public void searchTraining() {
-//System.out.print("Training Code: ");
-//int trainCode = input.nextInt();
-//int index = -1;
-//for (int i=0; i<trainings.size(); i++) {
-//	if (trainings.get(i).getCode() == trainCode) {
-//		index = i;
-//		break;
-//	}
-//}
-//if (index >= 0) {
-//	trainings.get(index).printInfo();
-//}
-//
-//else {
-//	System.out.println("The training has not been registered");
-//	return;
-//}
-//
-//}

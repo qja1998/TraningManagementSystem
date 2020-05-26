@@ -1,8 +1,14 @@
 package Training;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
-public abstract class Training implements TrainingInput {
+public abstract class Training implements TrainingInput, Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 344430950346434847L;
+	
 	protected TrainingKind kind = TrainingKind.WeightTraining;
 	protected String name;
 	protected int code;
@@ -11,7 +17,7 @@ public abstract class Training implements TrainingInput {
 	
 	public Training() {	
 	}
-	
+
 	public Training(String name,int code) {
 		this.name = name;
 		this.code = code;
