@@ -14,7 +14,7 @@ public class TrainingViewer extends JFrame {
 		model.addColumn("MAX WEIGHT");
 		model.addColumn("MAX COUNT");
 		
-		JTable table = new JTable(new DefaultTableModel());
+		JTable table = new JTable(model);
 		JScrollPane sp = new JScrollPane(table);
 		
 		this.add(sp);
