@@ -1,13 +1,16 @@
 package gui;
 
-import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-public class TrainingViewer extends JFrame {
+public class TrainingViewer extends JPanel {
 	
-	public TrainingViewer() {
+	WindowFrame frame;
+	
+	public TrainingViewer(WindowFrame frame) {
+		this.frame = frame;
 		DefaultTableModel model = new DefaultTableModel();
 		model.addColumn("CODE");
 		model.addColumn("NAME");
@@ -18,12 +21,6 @@ public class TrainingViewer extends JFrame {
 		JScrollPane sp = new JScrollPane(table);
 		
 		this.add(sp);
-		
-		
-		this.setSize(300, 300);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-		this.setVisible(true);
 	}
 
 }
