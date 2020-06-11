@@ -3,17 +3,22 @@ package gui;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import manager.TrainingManager;
+
+
 public class WindowFrame extends JFrame {
+	TrainingManager trainingManager;
 	MenuSelection menuselection;
 	TrainingAdder trainingadder;
 	TrainingViewer trainingviewer;
 	
-	public WindowFrame() {
+	public WindowFrame(TrainingManager trainingManager) {
 		
-		
+		this.trainingManager = trainingManager;
 		this.menuselection = new MenuSelection(this);
 		this.trainingadder = new TrainingAdder(this);
-		this.trainingviewer = new TrainingViewer(this);
+		this.trainingviewer = new TrainingViewer(this, this.trainingManager);
+
 		
 		this.setSize(500, 300);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

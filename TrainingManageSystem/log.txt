@@ -1,2 +1,0 @@
-5월 26, 2020 1:46:15 오후 log.EventLogger log
-정보: view training

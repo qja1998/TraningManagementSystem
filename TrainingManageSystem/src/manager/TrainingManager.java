@@ -1,3 +1,4 @@
+package manager;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -5,6 +6,7 @@ import java.util.Scanner;
 
 import Training.Cardio;
 import Training.Core;
+import Training.Training;
 import Training.TrainingInput;
 import Training.TrainingKind;
 import Training.WeightTraining;
@@ -139,7 +141,13 @@ public class TrainingManager implements Serializable {
 		}
 	}
 	
+	public int size() {
+		return trainings.size();
+	}
 	
+	public TrainingInput get(int index) {
+		return (Training) trainings.get(index);
+	}
 	
 	public void showEditMenu() {
 		System.out.println("Training Info Edit Menu");

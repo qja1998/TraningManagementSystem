@@ -1,3 +1,4 @@
+package manager;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -7,6 +8,7 @@ import java.io.ObjectOutputStream;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import gui.WindowFrame;
 import log.EventLogger;
 
 
@@ -23,6 +25,8 @@ public class MenuManagement {
         else {
         	trainingManager.setScanner(input);
         } 
+        
+        WindowFrame windowfranme = new WindowFrame(trainingManager);
 		
 		selectMenu(input, trainingManager);
 		putObject(trainingManager, "trainingmanager.ser");
